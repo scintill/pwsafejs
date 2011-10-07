@@ -1,0 +1,7 @@
+#passFormWrapper { display: table; width: 100%; height: 30em; text-align: center; }
+#passForm { display: table-cell; vertical-align:middle; }
+#errorMessage { color: red; }
+
+.entry .title, .entry .username {margin-right: 2em; }
+.entry .username, .entry .password { display: none; }
+.entry:hover .username, .entry:hover .password {display: inline;}
