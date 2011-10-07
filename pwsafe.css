@@ -2,6 +2,12 @@
 #passForm { display: table-cell; vertical-align:middle; }
 #errorMessage { color: red; }
 
-.entry .title, .entry .username {margin-right: 2em; }
-.entry .username, .entry .password { display: none; }
-.entry:hover .username, .entry:hover .password {display: inline;}
+.entry { padding: 0.5em 0 0.5em 1em; border: 1px solid green; margin: 0.5em 0; }
+.entry:before { content: ' > '; padding-right: 0.5em; }
+.entry .entrySubField { display: none; }
+.entry .username:before { content: 'Username: '; }
+.entry .password:before { content: 'Password: '; }
+.entry .notes:before { content: 'Notes: '; }
+
+.entry.expanded .entrySubField {display: block;}
+.entry:hover:not(.expanded) .username { display: inline; margin-left: 1em; }

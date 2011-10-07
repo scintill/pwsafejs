@@ -32,15 +32,25 @@ $(function() {
 
 function addEntry(record) {
     $entry = $('<div class="entry" />');
-    var $line = $('<span/>');
+    $entry.click(function() {
+        $(this).toggleClass('expanded');
+    });
+
+
     var $link = $('<a class="title" />');
     $link.text(record.title).attr('href', record.URL);
-    $link.appendTo($line);
-    var $user = $('<span class="username" />')
-    $user.text(record.username).appendTo($line);
-    var $password = $('<span class="password" />')
-    $password.text(record.password).appendTo($line);
+    $link.appendTo($entry);
 
-    $line.appendTo($entry);
+    var $user = $('<span class="username entrySubField" />')
+    $user.text(record.username).appendTo($entry);
+
+    var $password = $('<span class="password entrySubField" />')
+    $password.text(record.password).appendTo($entry);
+
+    if (record.notes) {
+        var $notes = $('<span class="notes entrySubField" />')
+        $notes.html('<pre>'+record.notes+'</pre>').appendTo($entry);
+    }
+
     $entry.appendTo(document.body);
 }
