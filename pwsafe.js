@@ -2,13 +2,13 @@ $(function() {
     $('#passForm').submit(function(e) {
         e.preventDefault();
 
-        try {
-
-            var passphrase = $('#passphrase').val();
-            var filename = $('#filename').val();
-            $.get(
-                filename,
-                function (data) {
+        var passphrase = $('#passphrase').val();
+        var filename = $('#filename').val();
+        $.ajax(
+            {
+                url: filename,
+                dataType: 'binary',
+                success: function (data) {
                     var pdb = new PWSafeDB(data);
                     try {
                         pdb.decrypt(passphrase);
@@ -22,11 +22,11 @@ $(function() {
                         addEntry(pdb.records[i]);
                     }
                 },
-                'binary'
-            );
-        } catch (e) {
-            $('#errorMessage').text(e);
-        }
+                error: function() {
+                    $('#errorMessage').text('File not found.');
+                }
+            }
+        );
     });
 });
 

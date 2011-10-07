@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <script type="text/javascript" src="jquery-1.4.4-binary-ajax.js"></script>
@@ -6,41 +7,23 @@
         <script type="text/javascript" src="hmac.js"></script>
         <script type="text/javascript" src="twofish.js"></script>
         <script type="text/javascript" src="pwsafedb.js"></script>
-        <style type="text/css">
-        .entry .title, .entry .username {margin-right: 2em; }
-        .entry .username, .entry .password { display: none; }
-        .entry:hover .username, .entry:hover .password {display: inline;}
-        </style>
-        <script type="text/javascript">
-        $(function() {
-            $.get(
-                'pass.psafe3',
-                function (data) {
-                    var pdb = new PWSafeDB(data);
-                    pdb.decrypt(prompt('Enter password'));
-                    for (var i = 0; i < pdb.records.length; i++) {
-                        addEntry(pdb.records[i]);
-                    }
-                },
-                'binary'
-            );
-        });
-        function addEntry(record) {
-            $entry = $('<div class="entry" />');
-            var $line = $('<span/>');
-            var $link = $('<a class="title" />');
-            $link.text(record.title).attr('href', record.URL);
-            $link.appendTo($line);
-            var $user = $('<span class="username" />')
-            $user.text(record.username).appendTo($line);
-            var $password = $('<span class="password" />')
-            $password.text(record.password).appendTo($line);
-
-            $line.appendTo($entry);
-            $entry.appendTo(document.body);
-        }
-        </script>
+        <script type="text/javascript" src="pwsafe.js"></script>
+        <link rel="stylesheet" type="text/css" href="pwsafe.css" />
     </head>
     <body>
+        <div id="passFormWrapper">
+            <form id="passForm" autocomplete="off">
+                <input type="hidden" id="filename" value="pass.psafe3" />
+                <div>
+                    <span id="errorMessage"></span>
+                </div>
+                <div>
+                    <input type="password" id="passphrase" size="24" />
+                </div>
+                <div>
+                    <input type="submit" value="Open" />
+                </div>
+            </form>
+        </div>
     </body>
 </html>
