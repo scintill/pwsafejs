@@ -6,6 +6,11 @@ This is a Javascript reader for Password Safe V3 files.  To use it, place your P
 
 The interface is really clunky right now, with a 1998-style Javascript prompt() for your password (make sure nobody's looking over your shoulder or they'll easily see your password) and a pretty plain list of your accounts.  Hover over (or tapping worked for me on the Android browser) a line of text to see the username and password.  I want to make a pretty, more full-featured, and secure UI, but I also just wanted to get this out in case I never get around to that.
 
+CREDITS
+- SHA256/HMAC from http://code.google.com/p/jscryptolib/ under the Lesser GPL
+- jDataView and patched jQuery from https://github.com/vjeux/jsDataView under WTFPL <http://sam.zoy.org/wtfpl/>
+- Twofish implementation based on http://members.tele2.nl/MAvanEverdingen/Code/code.html
+
 KNOWN ISSUES
 - Ignores grouping of accounts
 - Does not show all fields associated with your accounts (although most of the code to obtain this info is there)
