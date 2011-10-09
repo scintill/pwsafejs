@@ -15,3 +15,7 @@ KNOWN ISSUES
 - Ignores grouping of accounts
 - Does not show all fields associated with your accounts (although most of the code to obtain this info is there)
 - Does not check the integrity hash, which I suppose just means your DB could be corrupted or tampered with and you would get no warning
+
+FURTHER RESOURCES
+http://passwordsafe.svn.sourceforge.net/viewvc/passwordsafe/trunk/pwsafe/pwsafe/docs/formatV3.txt
+http://keybox.rubyforge.org/password-safe-db-format.html
