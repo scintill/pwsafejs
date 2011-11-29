@@ -1,4 +1,5 @@
 $(function() {
+    $('#passphrase').focus();
     $('#passForm').submit(function(e) {
         e.preventDefault();
 
