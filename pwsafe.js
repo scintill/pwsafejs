@@ -19,6 +19,7 @@ $(function() {
                     }
 
                     $('#passFormWrapper').hide();
+                    pdb.sortRecordsByTitle();
                     for (var i = 0; i < pdb.records.length; i++) {
                         addEntry(pdb.records[i]);
                     }
