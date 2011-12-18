@@ -13,8 +13,7 @@ The interface is really clunky right now, with a pretty plain list of your accou
 Known issues
 ---
 - Ignores grouping of accounts
-- Does not show all fields associated with your accounts (although most of the code to obtain this info is there)
-- Does not check the integrity hash, which I suppose means your DB could be corrupted or tampered with and you would get no warning other than your data appearing as garbage
+- Does not show all fields associated with your accounts -- should be pretty easy to add if you want though
 
 Credits
 ---
