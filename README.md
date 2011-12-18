@@ -19,6 +19,7 @@ Known issues
 - Ignores grouping of accounts
 - Does not show all fields associated with your accounts -- should be pretty easy to add if you want though
 - The decryption process can take almost 10 seconds on big enough databases, at least with the Android and iOS devices I tested with. I should figure out how to work around timeouts, and probably add some sort of progress indicator.
+- As mentioned, probably not very secure. Since my use case is logging into an account from a foreign computer I trust at least enough that I'm willing to potentially compromise that particular account, I'm interested in finding a way to not put "all my eggs in one basket." So far I can't think of a clever way to give myself access to arbitrary sets of account info without giving attakers the keys to ALL account info. Putting sensitive accounts into a separate database that you protect more carefully is probably a good idea though.
 
 Credits
 ---
