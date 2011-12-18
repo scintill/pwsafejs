@@ -10,10 +10,15 @@ This is a Javascript reader for Password Safe V3 files.  To use it, place your P
 
 The interface is really clunky right now, with a pretty plain list of your accounts.  Click an account to see the username and password.  I want to make a pretty, more full-featured, and secure UI, but I also just wanted to get this out in case I never get around to that.
 
+Compatibility
+---
+I've seen this work in recent versions of Google Chrome and Mozilla Firefox on Linux and Windows, the Browser in Android 2.3 on my Nexus One, and Safari in iOS 4.2.1.  The recent addition of the HMAC integrity verification is causing Mobile Safari to timeout the process on a moderately-sized database (possibly related to my iPod being old and slow.) For now this could probably be disabled with little fear of consequence if you need to run it on an old iOS device.
+
 Known issues
 ---
 - Ignores grouping of accounts
 - Does not show all fields associated with your accounts -- should be pretty easy to add if you want though
+- The decryption process can take almost 10 seconds on big enough databases, at least with the Android and iOS devices I tested with. I should figure out how to work around timeouts, and probably add some sort of progress indicator.
 
 Credits
 ---
