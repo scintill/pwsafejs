@@ -1,4 +1,4 @@
-psafejs
+pwsafejs
 ---
 Browser-based viewer for Password Safe v3 files (http://passwordsafe.sourceforge.net/)
 
