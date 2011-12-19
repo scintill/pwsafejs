@@ -1,6 +1,7 @@
 #passFormWrapper { display: table; width: 100%; height: 30em; text-align: center; }
 #passForm { display: table-cell; vertical-align:middle; }
 #errorMessage { color: red; }
+#spinner { display: none; }
 
 .entry { padding: 0.5em 0 0.5em 1em; border: 1px solid green; margin: 0.5em 0; }
 .entry:before { content: ' > '; padding-right: 0.5em; }

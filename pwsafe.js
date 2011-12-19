@@ -4,12 +4,14 @@ $(function() {
         e.preventDefault();
 
         $('#errorMessage').text('');
+        $('#spinner').show();
 
         var passphrase = $('#passphrase').val();
         var filename = $('#filename').val();
 
         PWSafeDB.jsPath = 'pwsafedb.js';
         PWSafeDB.downloadAndDecrypt(filename, passphrase, function(pdb) {
+            $('#spinner').hide();
             if (typeof pdb == "string") {
                 $('#errorMessage').text(pdb);
                 return; // <----
