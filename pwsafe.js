@@ -3,32 +3,24 @@ $(function() {
     $('#passForm').submit(function(e) {
         e.preventDefault();
 
+        $('#errorMessage').text('');
+
         var passphrase = $('#passphrase').val();
         var filename = $('#filename').val();
-        $.ajax(
-            {
-                url: filename,
-                dataType: 'binary',
-                success: function (data) {
-                    var pdb = new PWSafeDB(data);
-                    try {
-                        pdb.decrypt(passphrase);
-                    } catch (e) {
-                        $('#errorMessage').text(e);
-                        return;
-                    }
 
-                    $('#passFormWrapper').hide();
-                    pdb.sortRecordsByTitle();
-                    for (var i = 0; i < pdb.records.length; i++) {
-                        addEntry(pdb.records[i]);
-                    }
-                },
-                error: function() {
-                    $('#errorMessage').text('File not found.');
-                }
+        PWSafeDB.jsPath = 'pwsafedb.js';
+        PWSafeDB.downloadAndDecrypt(filename, passphrase, function(pdb) {
+            if (typeof pdb == "string") {
+                $('#errorMessage').text(pdb);
+                return; // <----
             }
-        );
+
+            $('#passFormWrapper').hide();
+            pdb.sortRecordsByTitle();
+            for (var i = 0; i < pdb.records.length; i++) {
+                addEntry(pdb.records[i]);
+            }
+        });
     });
 });
 
