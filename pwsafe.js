@@ -9,7 +9,6 @@ $(function() {
         var passphrase = $('#passphrase').val();
         var filename = $('#filename').val();
 
-        PWSafeDB.jsPath = 'pwsafedb.js';
         PWSafeDB.downloadAndDecrypt(filename, passphrase, function(pdb) {
             $('#spinner').hide();
             if (typeof pdb == "string") {
