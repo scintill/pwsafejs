@@ -39,19 +39,31 @@ $.get('config.json', function(config) {
                 $(this).toggleClass('expanded');
             });
 
+            var dontExpand = function(e) { e.stopPropagation(); };
+
             var $link = $('<a class="title" />');
             $link.text(record.title).attr('href', record.URL);
             $link.appendTo($entry);
+            $link.click(dontExpand);
 
             var $user = $('<span class="username entrySubField" />')
             $user.text(record.username).appendTo($entry);
+            $user.click(function(e) {
+                // since the username goes out to the side on unexpanded hover,
+                // might want to click it
+                if ($(this).parent().hasClass('expanded')) {
+                    dontExpand(e);
+                }
+            });
 
             var $password = $('<span class="password entrySubField" />')
             $password.text(record.password).appendTo($entry);
+            $password.click(dontExpand);
 
             if (record.notes) {
                 var $notes = $('<span class="notes entrySubField" />')
                 $notes.html('<pre>'+record.notes+'</pre>').appendTo($entry);
+                $notes.click(dontExpand);
             }
 
             $entry.appendTo(document.body);
