@@ -8,6 +8,8 @@ Intro and use
 ---
 This is a Javascript reader for Password Safe V3 files.  To use it, place your Password Safe DB in the directory and name it pass.psafe3.  You can test on your hard drive (with the --allow-file-access-from-files command line argument for Chrome, or something similar for other browsers) or online.
 
+You can see a [live demo here](http://scintill.net/pwsafejs) (password is "pass").
+
 The interface is really clunky right now, with a pretty plain list of your accounts.  Click an account to see the username and password.  I want to make a pretty, more full-featured, and secure UI, but I also just wanted to get this out in case I never get around to that.
 
 Compatibility
