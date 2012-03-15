@@ -3,7 +3,7 @@
 #errorMessage { color: red; }
 #spinner { display: none; }
 
-.entry { padding: 0.5em 0 0.5em 1em; border: 1px solid green; margin: 0.5em 0; }
+.entry { padding: 0.5em 0 0.5em 1em; border: 1px solid green; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; margin: 0.5em 0; }
 .entry:before { content: ' > '; padding-right: 0.5em; }
 .entry .entrySubField { display: none; }
 .entry .username:before { content: 'Username: '; }
