@@ -1,0 +1,3 @@
+[submodule "libpwsafejs"]
+	path = libpwsafejs
+	url = https://github.com/scintill/libpwsafejs.git

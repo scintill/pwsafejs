@@ -26,9 +26,8 @@ Known issues
 
 Credits
 ---
-See COPYING.md
+See libpwsafejs/COPYING.md.
 
-Resources
+Note on strange revision history
 ---
-- [Password Safe V3 file format official document](http://passwordsafe.svn.sourceforge.net/viewvc/passwordsafe/trunk/pwsafe/pwsafe/docs/formatV3.txt)
-- [File format summary](http://keybox.rubyforge.org/password-safe-db-format.html)
+I rewrote the repository into two repos so that the PWSafe database logic would be more reusable, trying to preserve history _and_ not waste space (probably a bad idea.)  So, if you want to execute old revisions, you'll have to also check out a contemporaneous revision from the new [libpwsafejs](http://github.com/scintill/libpwsafejs).
