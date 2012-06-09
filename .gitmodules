@@ -1,3 +1,6 @@
 [submodule "libpwsafejs"]
 	path = libpwsafejs
 	url = https://github.com/scintill/libpwsafejs.git
+[submodule "clippy-jquery"]
+	path = clippy-jquery
+	url = git://github.com/jimmysawczuk/clippy-jquery.git

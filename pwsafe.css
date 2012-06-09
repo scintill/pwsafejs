@@ -8,6 +8,7 @@
 .entry .entrySubField { display: none; }
 .entry .username:before { content: 'Username: '; }
 .entry .password:before { content: 'Password: '; }
+.clippy { margin: 0 .2em; }
 .entry .notes:before { content: 'Notes: '; }
 
 .entry.expanded .entrySubField {display: block;}

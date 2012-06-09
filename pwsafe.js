@@ -46,7 +46,7 @@ $.get('config.json', function(config) {
             $link.appendTo($entry);
             $link.click(dontExpand);
 
-            var $user = $('<span class="username entrySubField" />')
+            var $user = $('<span class="username entrySubField copyable" />')
             $user.text(record.username).appendTo($entry);
             $user.click(function(e) {
                 // since the username goes out to the side on unexpanded hover,
@@ -56,17 +56,24 @@ $.get('config.json', function(config) {
                 }
             });
 
-            var $password = $('<span class="password entrySubField" />')
+            var $password = $('<span class="password entrySubField copyable" />')
             $password.text(record.password).appendTo($entry);
             $password.click(dontExpand);
 
             if (record.notes) {
-                var $notes = $('<span class="notes entrySubField" />')
+                var $notes = $('<span class="notes entrySubField copyable" />')
                 $notes.html('<pre>'+record.notes+'</pre>').appendTo($entry);
                 $notes.click(dontExpand);
             }
 
             $entry.appendTo(document.body);
+
+            $entry.find('.copyable').each(function() {
+                var $copyable = $(this);
+                var $clippyContainer = $('<span class="clippy"><span/></span>');
+                $clippyContainer.prependTo($copyable);
+                $clippyContainer.children().clippy({text: $copyable.text(), clippy_path: "clippy-jquery/bin/clippy.swf"});
+            });
         }
     });
 }, 'json')
