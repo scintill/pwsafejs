@@ -2,7 +2,7 @@ pwsafejs
 ---
 Browser-based viewer for Password Safe v3 files (http://passwordsafe.sourceforge.net/)
 
-*NOTE:* This is alpha quality and hasn't been checked much for security yet, nor am I any sort of expert on security.  The password file is sent as-is (that is, an encrypted binary file) from the server to your browser, where it is decrypted by this application using the passphrase you supply.  Nobody should be able to see your passwords by sniffing the network, and your decrypted data (hopefully) won't be cached by the browser/OS, but I don't think I can forensically scrub secrets, and I could be missing something obvious... use at your own risk.
+*NOTE:* This is beta quality and hasn't been checked much for security, nor am I any sort of expert on security.  It's probably best to consider a _weak_ passphrase as _no_ passphrase, especially since you are publishing your passphrase database online.  Use at your own risk, and please read the security notes below.
 
 Intro and use
 ---
@@ -18,11 +18,20 @@ I've tested that it works in Google Chrome and Mozilla Firefox on Linux and Wind
 
 It's optimized for web worker-capable browsers but uses several setTimeout() calls when Workers aren't available.  Decryption can take 10-15 seconds on slow platforms such as my Nexus One and old iPod.
 
-Known issues
+Known issues/TODOs
 ---
 - Ignores grouping of accounts
 - Does not show all fields associated with your accounts -- should be pretty easy to add if you want though
-- As mentioned, probably not very secure. Since my use case is logging into an account from a foreign computer I trust at least enough that I'm willing to potentially compromise that particular account, I'm interested in finding a way to not "put all my eggs in one basket." So far I can't think of a clever way to give myself access to arbitrary sets of account info without giving attakers the keys to ALL account info. Putting sensitive accounts into a separate database that you protect more carefully is probably a good idea though.
+- Not _super_ secure, read below for more information.
+- Build into single self-contained file for easier security audit/checksum/signing?
+- On-screen keyboard to defeat keyloggers? This seems kind of silly to me though, because then you are vulnerable to physical eavesdroppers watching you forced to peck out your passphrase at 1 char/sec. Maybe mixing both would help to prevent either type of attacker from getting the full passphrase.
+
+Security notes
+---
+- The password file is sent as-is (that is, an encrypted binary file) from the server to your browser, where it is decrypted by this application using the passphrase you supply.  Nobody should be able to see your passwords by sniffing the network, and your decrypted data shouldn't be cached by browser's HTTP cache layer.  I don't think I can forensically scrub secrets (JS strings are immutable), so there is a possibility plaintext passwords could be recovered by a memory dump.
+- If you are concerned about a proactive attacker, take precautions against someone injecting spy code into the application.  Ideas: use HTTPS and verify that the certificate is what it's supposed to be; download the code locally and inspect it (possibly to see if it matches a known-good hash checksum), then run it locally.
+- Keeping separate databases based on credential importance (email vs. banks vs. stupid sites that make you register) and encrypting with separate passphrases might be a good way to hedge against compromise while accessing a low-security/trivial account on a public computer.
+- I have my copy behind Apache's built in HTTP Digest authentication with a pretty trivial password, basically just to keep it from being indexed by search engines and/or downloaded for offline cracking.
 
 Credits
 ---
@@ -30,4 +39,4 @@ See libpwsafejs/COPYING.md.
 
 Note on strange revision history
 ---
-I rewrote the repository into two repos so that the PWSafe database logic would be more reusable, trying to preserve history _and_ not waste space (probably a bad idea.)  So, if you want to execute old revisions, you'll have to also check out a contemporaneous revision from the new [libpwsafejs](http://github.com/scintill/libpwsafejs).
+I rewrote the repository into two repos so that the PWSafe database logic would be more reusable, trying to preserve history _and_ not waste space (probably a silly idea.)  So, if you want to execute old revisions, you'll have to also check out a contemporaneous revision from the new [libpwsafejs](http://github.com/scintill/libpwsafejs).
