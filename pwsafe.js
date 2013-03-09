@@ -20,8 +20,8 @@ $.get('config.json', function(config) {
 
             PWSafeDB.downloadAndDecrypt(filename, passphrase, function(pdb) {
                 $('#spinner').hide();
-                if (typeof pdb == "string") {
-                    $('#errorMessage').text(pdb);
+                if (pdb instanceof Error) {
+                    $('#errorMessage').text(pdb.message);
                     return; // <----
                 }
 
@@ -46,7 +46,7 @@ $.get('config.json', function(config) {
             $link.appendTo($entry);
             $link.click(dontExpand);
 
-            var $user = $('<span class="username entrySubField copyable" />')
+            var $user = $('<span class="username entrySubField copyable" />');
             $user.text(record.username).appendTo($entry);
             $user.click(function(e) {
                 // since the username goes out to the side on unexpanded hover,
@@ -56,12 +56,12 @@ $.get('config.json', function(config) {
                 }
             });
 
-            var $password = $('<span class="password entrySubField copyable" />')
+            var $password = $('<span class="password entrySubField copyable" />');
             $password.text(record.password).appendTo($entry);
             $password.click(dontExpand);
 
             if (record.notes) {
-                var $notes = $('<span class="notes entrySubField copyable" />')
+                var $notes = $('<span class="notes entrySubField copyable" />');
                 $notes.html('<pre>'+record.notes+'</pre>').appendTo($entry);
                 $notes.click(dontExpand);
             }
