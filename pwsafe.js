@@ -18,7 +18,7 @@ $.get('config.json', function(config) {
             var passphrase = $('#passphrase').val();
             var filename = $('#filename').val();
 
-            PWSafeDB.downloadAndDecrypt(filename, passphrase, function(pdb) {
+            PWSafeDB.downloadAndDecrypt(filename, passphrase, {}, function(pdb) {
                 $('#spinner').hide();
                 if (pdb instanceof Error) {
                     $('#errorMessage').text(pdb.message);
@@ -59,6 +59,12 @@ $.get('config.json', function(config) {
             var $password = $('<span class="password entrySubField copyable" />');
             $password.text(record.password).appendTo($entry);
             $password.click(dontExpand);
+
+            if (record.emailAddress) {
+                var $emailAddress = $('<span class="emailAddress entrySubField copyable" />');
+                $emailAddress.text(record.emailAddress).appendTo($entry);
+                $emailAddress.click(dontExpand);
+            }
 
             if (record.notes) {
                 var $notes = $('<span class="notes entrySubField copyable" />');

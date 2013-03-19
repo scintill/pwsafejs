@@ -10,6 +10,7 @@
 .entry .password:before { content: 'Password: '; }
 .clippy { margin: 0 .2em; }
 .entry .notes:before { content: 'Notes: '; }
+.entry .emailAddress:before { content: 'Email Address: '; }
 
 .entry.expanded .entrySubField {display: block;}
 .entry:hover:not(.expanded) .username { display: inline; margin-left: 1em; }
