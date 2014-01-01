@@ -47,7 +47,8 @@ $.get('config.json', function(config) {
             $link.click(dontExpand);
 
             var $user = $('<span class="username entrySubField copyable" />');
-            $user.text(record.username).appendTo($entry);
+            $user.text(record.username);
+            $user.appendTo($entry);
             $user.click(function(e) {
                 // since the username goes out to the side on unexpanded hover,
                 // might want to click it
@@ -57,7 +58,8 @@ $.get('config.json', function(config) {
             });
 
             var $password = $('<span class="password entrySubField copyable" />');
-            $password.text(record.password).appendTo($entry);
+            $password.text(record.password);
+            $password.appendTo($entry);
             $password.click(dontExpand);
 
             if (record.emailAddress) {
