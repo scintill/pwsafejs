@@ -26,14 +26,15 @@ $.get('config.json', function(config) {
                 }
 
                 $('#passFormWrapper').hide();
+                var $box = $('#passDbRecords');
                 pdb.sortRecordsByTitle();
                 for (var i = 0; i < pdb.records.length; i++) {
-                    addEntry(pdb.records[i]);
+                    addEntry(pdb.records[i], $box);
                 }
             });
         });
 
-        function addEntry(record) {
+        function addEntry(record, $box) {
             var $entry = $('<div class="entry" />');
             $entry.click(function() {
                 $(this).toggleClass('expanded');
@@ -74,7 +75,7 @@ $.get('config.json', function(config) {
                 $notes.click(dontExpand);
             }
 
-            $entry.appendTo(document.body);
+            $entry.appendTo($box);
 
             $entry.find('.copyable').each(function() {
                 var $copyable = $(this);

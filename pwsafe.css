@@ -14,3 +14,5 @@
 
 .entry.expanded .entrySubField {display: block;}
 .entry:hover:not(.expanded) .username { display: inline; margin-left: 1em; }
+
+#license { margin-top: 5em; text-align: center; }

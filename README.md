@@ -12,9 +12,13 @@ You can see a [live demo here](http://scintill.net/pwsafejs) (password is "pass"
 
 The interface is really clunky right now, with a pretty plain list of your accounts.  Click an account to see the username and password.  I want to make a pretty, more full-featured, and secure UI, but I also just wanted to get this out in case I never get around to that.
 
+License
+---
+pwsafejs and libpwsafejs are distributed under The BSD 2-Clause License.  Several other licenses apply to third-party distributions included with libpwsafejs.  See [COPYING.html](COPYING.html) for more information.
+
 Compatibility
 ---
-I've tested that it works in Google Chrome and Mozilla Firefox on Linux and Windows, Internet Explorer 8 (Windows 7), the Browser in Android 2.3 on my Nexus One, and Safari in iOS 4.2.1.
+I've tested that (at one point) it worked in Google Chrome and Mozilla Firefox on Linux and Windows, Internet Explorer 8 (Windows 7), the Browser in Android 2.3 on my Nexus One, and Safari in iOS 4.2.1.
 
 It's optimized for web worker-capable browsers but uses several setTimeout() calls when Workers aren't available.  Decryption can take 10-15 seconds on slow platforms such as my Nexus One and old iPod.
 
@@ -32,10 +36,6 @@ Security notes
 - If you are concerned about a proactive attacker, take precautions against someone injecting spy code into the application.  Ideas: use HTTPS and verify that the certificate is what it's supposed to be; download the code locally and inspect it (possibly to see if it matches a known-good hash checksum), then run it locally.
 - Keeping separate databases based on credential importance (email vs. banks vs. stupid sites that make you register) and encrypting with separate passphrases might be a good way to hedge against compromise while accessing a low-security/trivial account on a public computer.
 - I have my copy behind Apache's built in HTTP Digest authentication with a pretty trivial password, basically just to keep it from being indexed by search engines and/or downloaded for offline cracking.
-
-Credits
----
-See libpwsafejs/COPYING.md.
 
 Note on strange revision history
 ---
