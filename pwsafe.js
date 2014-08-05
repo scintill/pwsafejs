@@ -18,7 +18,7 @@ $.get('config.json', function(config) {
             var passphrase = $('#passphrase').val();
             var filename = $('#filename').val();
 
-            PWSafeDB.downloadAndDecrypt(filename, passphrase, {}, function(pdb) {
+            PWSafeDB.decryptFromUrl(filename, passphrase, {}, function(pdb) {
                 $('#spinner').hide();
                 if (pdb instanceof Error) {
                     $('#errorMessage').text(pdb.message);
